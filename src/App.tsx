@@ -41,18 +41,20 @@ const App: FC = () => {
 
   return (
     <div>
-      <h1>App</h1>
-      <h2>
-        Level: {level} - {gameBoard.name}:
-      </h2>
-      <Board
-        gameBoard={gameBoard}
-        liveGameBoard={liveGameBoard}
-        setLiveGameBoard={setLiveGameBoard}
-      />
-      <button onClick={handleClick} style={{ margin: "20px" }}>
-        Done
-      </button>
+      <div>
+        <h1>Click and paint</h1>
+        <h2>
+          Level: {level} - {gameBoard.name}:
+        </h2>
+        <Board
+          gameBoard={gameBoard}
+          liveGameBoard={liveGameBoard}
+          setLiveGameBoard={setLiveGameBoard}
+        />
+        <button onClick={handleClick} style={{ margin: "20px" }}>
+          Done
+        </button>
+      </div>
     </div>
   );
 };

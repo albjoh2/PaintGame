@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Row from "./Row";
+import WhatsLeft from "./WhatsLeft";
 
 interface BoardProps {
   gameBoard: GameBoard;
@@ -27,51 +28,54 @@ const Board: FC<BoardProps> = ({
   console.log(liveGameBoard);
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "40px",
-        }}
-      >
-        {getCollumnTotals(gameBoard).map((total, i) => (
-          <p key={i} style={{ margin: "0", padding: "0", width: "10px" }}>
-            {total}
-          </p>
-        ))}
-      </div>
+    <div style={{ display: "flex", alignItems: "center" }}>
       <div>
-        {gameBoard.board.map((row, i) => (
-          <Row
-            key={i}
-            rowNumber={i}
-            row={row}
-            liveGameBoard={liveGameBoard.board[i]}
-            setLiveGameBoard={setLiveGameBoard}
-          />
-        ))}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "40px",
+          }}
+        >
+          {getCollumnTotals(gameBoard).map((total, i) => (
+            <p key={i} style={{ margin: "0", padding: "0", width: "10px" }}>
+              {total}
+            </p>
+          ))}
+        </div>
+        <div>
+          {gameBoard.board.map((row, i) => (
+            <Row
+              key={i}
+              rowNumber={i}
+              row={row}
+              liveGameBoard={liveGameBoard.board[i]}
+              setLiveGameBoard={setLiveGameBoard}
+            />
+          ))}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "40px",
+          }}
+        >
+          {getCollumnTotals(liveGameBoard).map((total, i) => (
+            <p
+              key={i}
+              style={{
+                margin: "0",
+                padding: "0",
+                width: "10px",
+              }}
+            >
+              {total}
+            </p>
+          ))}
+        </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "40px",
-        }}
-      >
-        {getCollumnTotals(liveGameBoard).map((total, i) => (
-          <p
-            key={i}
-            style={{
-              margin: "0",
-              padding: "0",
-              width: "10px",
-            }}
-          >
-            {total}
-          </p>
-        ))}
-      </div>
+      <WhatsLeft gameBoard={gameBoard} liveGameBoard={liveGameBoard} />
     </div>
   );
 };

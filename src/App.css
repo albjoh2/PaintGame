@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+
+.correct-row {
+  color: green;
+}
+.default-row {
+  color: black;
+}

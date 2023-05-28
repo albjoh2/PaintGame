@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 
 interface CellProps {
   setLiveGameBoard?: React.Dispatch<React.SetStateAction<GameBoard>>;
@@ -15,6 +15,7 @@ const Cell: FC<CellProps> = ({
 }) => {
   const [count, setCount] = useState(0);
   const [color, setColor] = useState("#fff");
+  const [activeCell, setActiveCell] = useState(false);
   const colors = [
     "#fff",
     "#000",
@@ -41,6 +42,35 @@ const Cell: FC<CellProps> = ({
     });
   };
 
+  const handleMouseOver = (count: number) => () => {
+    if (activeCell) {
+      setCount(count % colors.length);
+      setColor(colors[count % colors.length]);
+      setLiveGameBoard?.((prev) => {
+        const newBoard = [...prev.board];
+        newBoard[rowNumber][cellNumber] = count % colors.length;
+        return { ...prev, board: newBoard };
+      });
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("mouseup", handleMouseUp);
+    return () => {
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, []);
+
+  const handleMouseDown = () => {
+    setActiveCell(true);
+  };
+
+  const handleMouseUp = () => {
+    setActiveCell(false);
+  };
+
   return (
     <button
       style={{
@@ -53,7 +83,8 @@ const Cell: FC<CellProps> = ({
         backgroundColor: color,
         color: "#aaa",
       }}
-      onClick={handleClick(count + 1)}
+      onMouseDown={handleClick(count + 1)}
+      onMouseOver={handleMouseOver(count + 1)}
     >
       {count}
     </button>

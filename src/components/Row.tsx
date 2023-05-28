@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Cell from "./Cell";
 
 interface RowProps {
@@ -16,10 +16,22 @@ const Row: FC<RowProps> = ({
 }) => {
   const correctRowValue = row.reduce((total, number) => total + number, 0);
   const rowValue = liveGameBoard.reduce((total, number) => total + number, 0);
+  const [isCorrectRow, setIsCorrectRow] = useState(false);
+
+  useEffect(() => {
+    setIsCorrectRow(JSON.stringify(liveGameBoard) === JSON.stringify(row));
+  }, []);
 
   return (
     <div>
-      <p style={{ width: "25px", display: "inline-block", margin: "0" }}>
+      <p
+        className={isCorrectRow ? "correct-row" : "default-row"}
+        style={{
+          width: "25px",
+          display: "inline-block",
+          margin: "0",
+        }}
+      >
         {correctRowValue}
       </p>
       {row.map((_, i) => (
@@ -31,7 +43,14 @@ const Row: FC<RowProps> = ({
           liveGameBoard={liveGameBoard}
         />
       ))}
-      <p style={{ width: "25px", display: "inline-block", margin: "0" }}>
+      <p
+        className={isCorrectRow ? "correct-row" : "default-row"}
+        style={{
+          width: "25px",
+          display: "inline-block",
+          margin: "0",
+        }}
+      >
         {rowValue}
       </p>
     </div>

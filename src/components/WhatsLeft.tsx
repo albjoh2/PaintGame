@@ -43,9 +43,11 @@ const WhatsLeft: FC<WhatsLeftProps> = ({ gameBoard, liveGameBoard }) => {
       }}
     >
       {colorsLeft.map((color, i) => (
-        <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+        <div
+          key={i}
+          style={{ display: "flex", gap: "5px", alignItems: "center" }}
+        >
           <div
-            key={i}
             style={{
               backgroundColor: `${colors[i]}`,
               border: "1px solid black",

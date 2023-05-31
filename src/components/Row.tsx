@@ -20,7 +20,7 @@ const Row: FC<RowProps> = ({
 
   useEffect(() => {
     setIsCorrectRow(JSON.stringify(liveGameBoard) === JSON.stringify(row));
-  }, []);
+  }, [rowValue, row]);
 
   return (
     <div>

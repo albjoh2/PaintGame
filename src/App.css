@@ -43,6 +43,7 @@
 
 .correct-row {
   color: green;
+  font-weight: bold;
 }
 .default-row {
   color: black;

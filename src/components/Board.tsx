@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Row from "./Row";
 import WhatsLeft from "./WhatsLeft";
 
@@ -14,18 +14,30 @@ const Board: FC<BoardProps> = ({
   setLiveGameBoard,
 }) => {
   const getCollumnTotals = (gameBoard: GameBoard) => {
-    const collumnTotals: number[] = [];
+    const columnTotals: number[] = [];
     for (let i = 0; i < gameBoard.board.length; i++) {
       let total = 0;
       for (let j = 0; j < gameBoard.board.length; j++) {
         total += gameBoard.board[j][i];
       }
-      collumnTotals.push(total);
+      columnTotals.push(total);
     }
-    return collumnTotals;
+    return columnTotals;
   };
 
-  console.log(liveGameBoard);
+  const [correctColumns, setCorrectColumns] = useState<number[]>([]);
+
+  useEffect(() => {
+    const newCorrectColumns: number[] = [];
+    for (let i = 0; i < gameBoard.board.length; i++) {
+      const column = gameBoard.board.map((row) => row[i]);
+      const liveColumn = liveGameBoard.board.map((row) => row[i]);
+      if (JSON.stringify(column) === JSON.stringify(liveColumn)) {
+        newCorrectColumns.push(i);
+      }
+    }
+    setCorrectColumns(newCorrectColumns);
+  }, [gameBoard, liveGameBoard]);
 
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
@@ -38,7 +50,13 @@ const Board: FC<BoardProps> = ({
           }}
         >
           {getCollumnTotals(gameBoard).map((total, i) => (
-            <p key={i} style={{ margin: "0", padding: "0", width: "10px" }}>
+            <p
+              key={i}
+              className={
+                correctColumns.includes(i) ? "correct-row" : "default-row"
+              }
+              style={{ margin: "0", padding: "0", width: "10px" }}
+            >
               {total}
             </p>
           ))}
@@ -64,6 +82,9 @@ const Board: FC<BoardProps> = ({
           {getCollumnTotals(liveGameBoard).map((total, i) => (
             <p
               key={i}
+              className={
+                correctColumns.includes(i) ? "correct-row" : "default-row"
+              }
               style={{
                 margin: "0",
                 padding: "0",

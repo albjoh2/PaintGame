@@ -1,5 +1,14 @@
 {
   "Level1": {
+    "name": "Plus",
+    "board": [
+      [0, 1, 0],
+      [1, 1, 1],
+      [0, 1, 0]
+    ]
+  },
+
+  "Level2": {
     "name": "Chess",
     "board": [
       [0, 1, 0, 1, 0, 1, 0],
@@ -12,7 +21,7 @@
     ]
   },
 
-  "Level2": {
+  "Level3": {
     "name": "TicTacToe",
     "board": [
       [1, 1, 1, 1, 1, 1, 1],
@@ -24,7 +33,7 @@
       [1, 1, 1, 1, 1, 1, 1]
     ]
   },
-  "Level3": {
+  "Level4": {
     "name": "Golden egg in darkness",
     "board": [
       [1, 1, 1, 1, 1, 1, 1],
@@ -36,7 +45,7 @@
       [1, 1, 1, 1, 1, 1, 1]
     ]
   },
-  "Level4": {
+  "Level5": {
     "name": "Smile",
     "board": [
       [0, 0, 1, 1, 1, 1, 0, 0],
@@ -49,7 +58,7 @@
       [0, 0, 1, 1, 1, 1, 0, 0]
     ]
   },
-  "Level5": {
+  "Level6": {
     "name": "House in the sun with a window",
     "board": [
       [5, 4, 4, 4, 4, 4, 4, 4],
@@ -62,7 +71,7 @@
       [3, 2, 1, 2, 2, 2, 2, 3]
     ]
   },
-  "Level6": {
+  "Level7": {
     "name": "A colorfull butterfly",
     "board": [
       [0, 2, 2, 2, 0, 0, 0, 0, 0, 2, 2, 2, 0],
@@ -80,7 +89,7 @@
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ]
   },
-  "Level7": {
+  "Level8": {
     "name": "Chicken hatching from an egg in the night",
     "board": [
       [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
@@ -99,7 +108,7 @@
       [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]
     ]
   },
-  "Level8": {
+  "Level9": {
     "name": "Spiderlike man in front of a lightblue sky",
     "board": [
       [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 7],

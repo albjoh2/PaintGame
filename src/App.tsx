@@ -41,7 +41,14 @@ const App: FC = () => {
 
   return (
     <div>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <h1>Click and paint</h1>
         <h2>
           Level: {level} - {gameBoard.name}:
